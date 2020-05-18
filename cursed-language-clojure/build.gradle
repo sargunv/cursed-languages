@@ -1,3 +1,5 @@
+import dev.clojurephant.plugin.clojure.tasks.ClojureReflection
+
 plugins {
     id 'dev.clojurephant.clojure' version '0.5.0'
 }
@@ -15,8 +17,15 @@ clojure {
     builds {
         main {
             aotAll()
-            reflection = 'fail'
+            reflection = ClojureReflection.fail
         }
+    }
+}
+
+idea {
+    module {
+        sourceDirs += project.sourceSets.main.clojure.srcDirs
+        sourceDirs += project.sourceSets.testmod.clojure.srcDirs
     }
 }
 
