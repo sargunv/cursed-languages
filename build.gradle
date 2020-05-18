@@ -29,10 +29,6 @@ allprojects {
         modRuntime 'io.github.prospector:modmenu:1.10.2+build.32'
     }
 
-    configurations {
-        dev
-    }
-
     repositories {
         jcenter()
         maven {
@@ -41,20 +37,7 @@ allprojects {
         }
     }
 
-    jar {
-        classifier = "dev"
-    }
-
     afterEvaluate {
-        remapJar {
-            input = file("${project.buildDir}/libs/$archivesBaseName-${version}-dev.jar")
-            archiveName = "${archivesBaseName}-${version}.jar"
-        }
-
-        artifacts {
-            dev file: file("${project.buildDir}/libs/$archivesBaseName-${version}-dev.jar"), type: "jar", builtBy: jar
-        }
-
         processResources {
             inputs.property "version", project.version
 
