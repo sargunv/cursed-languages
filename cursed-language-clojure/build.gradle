@@ -15,6 +15,7 @@ clojure {
     builds {
         main {
             aotAll()
+            reflection = 'fail'
         }
     }
 }
