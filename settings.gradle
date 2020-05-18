@@ -12,4 +12,5 @@ pluginManagement {
 rootProject.name = 'cursed-languages'
 
 include 'cursed-language-clojure'
+include 'cursed-language-xtend'
 

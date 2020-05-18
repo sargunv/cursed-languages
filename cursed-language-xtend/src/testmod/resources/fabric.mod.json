@@ -1,0 +1,17 @@
+{
+    "schemaVersion": 1,
+    "name": "Xtend Test Mod",
+    "id": "cursed-language-xtend-testmod",
+    "version": "${version}",
+    "entrypoints": {
+        "main": [
+            {
+                "adapter": "cursed-xtend",
+                "value": "me.sargunvohra.mcmods.language.xtend.example.ExampleMainEntrypoint"
+            }
+        ]
+    },
+    "depends": {
+        "cursed-language-clojure": "*"
+    }
+}

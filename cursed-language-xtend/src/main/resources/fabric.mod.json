@@ -1,11 +1,11 @@
 {
     "schemaVersion": 1,
-    "id": "cursed-language-clojure",
-    "name": "Cursed Language Clojure",
-    "description": "Unofficial Fabric language module for Clojure.",
+    "id": "cursed-language-xtend",
+    "name": "Cursed Language Xtend",
+    "description": "Unofficial Fabric language module for Xtend.",
     "version": "${version}",
     "languageAdapters": {
-        "cursed-clojure": "me.sargunvohra.mcmods.language.clojure.ClojureAdapter"
+        "cursed-xtend": "me.sargunvohra.mcmods.language.xtend.XtendAdapter"
     },
     "depends": {
         "fabricloader": "*"

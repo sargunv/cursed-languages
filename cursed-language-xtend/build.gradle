@@ -1,0 +1,10 @@
+plugins {
+    id "org.xtext.xtend" version "2.0.8"
+}
+
+archivesBaseName = "cursed-language-xtend"
+
+dependencies {
+    modApi 'org.eclipse.xtend:org.eclipse.xtend.lib:2.21.0'
+    include 'org.eclipse.xtend:org.eclipse.xtend.lib:2.21.0'
+}
