@@ -5,7 +5,7 @@
     "description": "Unofficial Fabric language module for Clojure.",
     "version": "${version}",
     "languageAdapters": {
-        "cursed-clojure": "me.sargunvohra.mcmods.language.clojure.ClojureAdapter"
+        "clojure": "me.sargunvohra.mcmods.language.clojure.ClojureAdapter"
     },
     "depends": {
         "fabricloader": "*"

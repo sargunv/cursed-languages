@@ -1,0 +1,9 @@
+{
+    "schemaVersion": 1,
+    "name": "Language Test Mods",
+    "id": "cursed-languages-testmod",
+    "version": "${version}",
+    "depends": {
+        "fabricloader": "*"
+    }
+}

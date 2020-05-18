@@ -5,7 +5,7 @@
     "description": "Unofficial Fabric language module for Xtend.",
     "version": "${version}",
     "languageAdapters": {
-        "cursed-xtend": "me.sargunvohra.mcmods.language.xtend.XtendAdapter"
+        "xtend": "me.sargunvohra.mcmods.language.xtend.XtendAdapter"
     },
     "depends": {
         "fabricloader": "*"

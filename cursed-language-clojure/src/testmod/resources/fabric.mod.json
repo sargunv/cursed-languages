@@ -6,12 +6,16 @@
     "entrypoints": {
         "main": [
             {
-                "adapter": "cursed-clojure",
+                "adapter": "clojure",
                 "value": "me.sargunvohra.mcmods.language.clojure.example.ExampleMainEntrypoint"
             }
         ]
     },
     "depends": {
+        "fabricloader": "*",
         "cursed-language-clojure": "*"
+    },
+    "custom": {
+        "modmenu:parent": "cursed-languages-testmod"
     }
 }

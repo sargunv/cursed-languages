@@ -6,12 +6,16 @@
     "entrypoints": {
         "main": [
             {
-                "adapter": "cursed-xtend",
+                "adapter": "xtend",
                 "value": "me.sargunvohra.mcmods.language.xtend.example.ExampleMainEntrypoint"
             }
         ]
     },
     "depends": {
+        "fabricloader": "*",
         "cursed-language-clojure": "*"
+    },
+    "custom": {
+        "modmenu:parent": "cursed-languages-testmod"
     }
 }
