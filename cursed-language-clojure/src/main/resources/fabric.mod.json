@@ -1,0 +1,17 @@
+{
+    "schemaVersion": 1,
+    "id": "cursed-language-clojure",
+    "name": "Cursed Language Clojure",
+    "description": "Unofficial Fabric language module for Clojure.",
+    "version": "${version}",
+    "languageAdapters": {
+        "cursed-clojure": "me.sargunvohra.mcmods.language.clojure.adapter.Adapter"
+    },
+    "depends": {
+        "fabricloader": "*"
+    },
+    "custom": {
+        "modmenu:api": true,
+        "modmenu:parent": "cursed-languages"
+    }
+}

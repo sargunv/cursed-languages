@@ -1,0 +1,17 @@
+{
+    "schemaVersion": 1,
+    "name": "Clojure Test Mod",
+    "id": "cursed-language-clojure-testmod",
+    "version": "${version}",
+    "entrypoints": {
+        "main": [
+            {
+                "adapter": "cursed-clojure",
+                "value": "me.sargunvohra.mcmods.language.clojure.example.ExampleMainEntrypoint"
+            }
+        ]
+    },
+    "depends": {
+        "cursed-language-clojure": "*"
+    }
+}

@@ -1,0 +1,15 @@
+root = true
+
+[*]
+charset = utf-8
+insert_final_newline = true
+
+[*.{json,gradle,clj}]
+indent_style = space
+max_line_length = 100
+
+[*.{json,gradle}]
+indent_size = 4
+
+[*.clj]
+indent_size = 2

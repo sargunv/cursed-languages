@@ -1,0 +1,124 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+    id 'fabric-loom' version '0.2.7-SNAPSHOT'
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'fabric-loom'
+
+    group 'me.sargunvohra.mcmods'
+    version '0.1.0-SNAPSHOT'
+
+    sourceSets {
+        testmod {
+            compileClasspath += main.compileClasspath
+            runtimeClasspath += main.runtimeClasspath
+        }
+    }
+
+    dependencies {
+        implementation 'org.clojure:clojure:1.10.1'
+
+        minecraft 'com.mojang:minecraft:1.15.2'
+        mappings 'net.fabricmc:yarn:1.15.2+build.15:v2'
+        modImplementation 'net.fabricmc:fabric-loader:0.8.3+build.196'
+
+        modRuntime 'net.fabricmc.fabric-api:fabric-api:0.10.8+build.310-1.15'
+        modRuntime 'io.github.prospector:modmenu:1.10.2+build.32'
+    }
+
+    configurations {
+        dev
+    }
+
+    repositories {
+        jcenter()
+        maven {
+            name = 'fabricmc'
+            url = 'http://maven.fabricmc.net'
+        }
+    }
+
+    jar {
+        classifier = "dev"
+    }
+
+    afterEvaluate {
+        remapJar {
+            input = file("${project.buildDir}/libs/$archivesBaseName-${version}-dev.jar")
+            archiveName = "${archivesBaseName}-${version}.jar"
+        }
+
+        artifacts {
+            dev file: file("${project.buildDir}/libs/$archivesBaseName-${version}-dev.jar"), type: "jar", builtBy: jar
+        }
+
+        processResources {
+            inputs.property "version", project.version
+
+            from(sourceSets.main.resources.srcDirs) {
+                include "fabric.mod.json"
+                expand "version": project.version
+            }
+
+            from(sourceSets.main.resources.srcDirs) {
+                exclude "fabric.mod.json"
+            }
+        }
+    }
+
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+subprojects {
+    dependencies {
+        testmodCompile sourceSets.main.output
+    }
+
+    task remapMavenJar(type: Copy, dependsOn: remapJar) {
+        afterEvaluate {
+            from("${project.buildDir}/libs/$archivesBaseName-${version}.jar")
+            into("${project.buildDir}/libs/")
+            rename { String fn -> "$archivesBaseName-${version}-maven.jar" }
+        }
+    }
+
+    publishing {
+        repositories {
+            mavenLocal()
+        }
+        publications {
+            mavenJava(MavenPublication) {
+                afterEvaluate {
+                    artifact(file("${project.buildDir}/libs/$archivesBaseName-${version}-maven.jar")) {
+                        builtBy remapMavenJar
+                    }
+                    artifact(sourcesJar) {
+                        builtBy remapSourcesJar
+                    }
+                }
+            }
+        }
+    }
+}
+
+subprojects.each { remapJar.dependsOn("${it.path}:remapJar") }
+
+sourceSets {
+    testmod
+}
+
+dependencies {
+    afterEvaluate {
+        subprojects.each {
+            compile project(path: ":${it.name}")
+            include project("${it.name}:")
+            testmodCompile project("${it.name}:").sourceSets.testmod.output
+        }
+    }
+}

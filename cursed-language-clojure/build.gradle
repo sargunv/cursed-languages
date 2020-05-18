@@ -1,0 +1,26 @@
+plugins {
+    id 'dev.clojurephant.clojure' version '0.5.0'
+}
+
+archivesBaseName = "cursed-language-clojure"
+
+repositories {
+    maven {
+        name = 'clojars'
+        url = 'https://repo.clojars.org'
+    }
+}
+
+clojure {
+    builds {
+        main {
+            aotAll()
+        }
+    }
+}
+
+dependencies {
+    modApi 'org.clojure:clojure:1.10.1'
+    include 'org.clojure:clojure:1.10.1'
+    testmodCompile 'junit:junit:4.12'
+}

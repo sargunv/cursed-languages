@@ -1,0 +1,13 @@
+{
+    "schemaVersion": 1,
+    "id": "cursed-languages",
+    "name": "Cursed Languages",
+    "description": "Unofficial Fabric language modules.",
+    "version": "${version}",
+    "depends": {
+        "fabricloader": "*"
+    },
+    "custom": {
+        "modmenu:api": true
+    }
+}
